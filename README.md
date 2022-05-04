@@ -1,9 +1,26 @@
 # JS Study
 
-Javascript 독학하면서 README에 간단하게 문법 정리 (일단은 기본 중심으로, js unique 한 것 위주로)
+Javascript 독학하면서 README에 간단하게 문법 정리
 
-알고리즘 (코테) 문제도 하나씩 풀어보자.
+일단은 기본 중심으로, js에서 unique한 문법 위주로
 
+알고리즘 (코테) 문제도 연습
+
+## 목차
+- [Basics](#basics)
+- [출력](#출력)
+- [변수 선언](#변수-선언)
+- [반복문 조건문](#반복문-조건문)
+- [연산자](#연산자)
+- [함수 Function](#함수-function)
+- [객체](#객체)
+- [배열 Array](#배열-array)
+  - [배열 선언](#배열-선언)
+  - [내장 함수](#내장-함수)
+  - [배열 정렬 sort](#배열-정렬-sort)
+- [Math 객체](#math-객체)
+- [기타](#기타)
+  
 ## Basics
 - C/C++과 유사한 면이 많은 것 같다.
 - 세미콜론 ';' 로 줄 마침
@@ -14,7 +31,7 @@ Javascript 독학하면서 README에 간단하게 문법 정리 (일단은 기�
 <b>console.log(출력할 것)</b>
 
 
-## 변수/상수 선언
+## 변수 선언
 C/C++ 처럼 선언과 초기화를 거쳐서 진행된다.
 - <b>let, var :</b> mutable 변수 선언 (재할당 가능!!!)
 	- var 변수이름 : 변수의 값을 선언하지는 않아도 undefined 할당됨.
@@ -29,7 +46,7 @@ let과 const 로 선언한 변수들은 block-level scope를 따른다. (narrowe
 -> let, const 를 사용하자.
 
 
-## 반복문, 조건문
+## 반복문 조건문
 {} 괄호 사용을 잊지 말자 (C/C++ 과 기본적으로 동일)
 - <b> for문: </b> for (초기식; 조건; 증감식) { 반복문 실행문 }
 - <b> if문: </b> if(조건) {조건 실행}
@@ -53,7 +70,7 @@ for (var key in dict_ex){			// 사전 순회 예시
 - ===, !== : type 비교까지.
 
 
-## 함수 (Function)
+## 함수 Function
 함수 선언은 모든 언어가 비슷함
 ```javascript
 function add (x,y) {
@@ -109,7 +126,7 @@ delete grid.x;		//객체 속성 삭제
 - arr.splice(인덱스, 제거할 갯수, 넣을값(optional)) : 특정 인덱스 (범위)의 값 추출, 값 수정도 가능
 
 
-### 배열 정렬 (sort)
+### 배열 정렬 sort
 배열의 sort 지원한다.
 
 <b>주의 : 그냥 sort는 무조건 문자열로 변환 후 유니코드 기준으로 정렬한다. </b>
