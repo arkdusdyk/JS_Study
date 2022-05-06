@@ -22,6 +22,7 @@ Javascript 독학하면서 README에 간단하게 문법 정리
   - [내장 함수](#내장-함수)
 - [Math 객체](#math-객체)
 - [기타](#기타)
+- [2차원 배열)(#2차원-배열)
   
 ## Basics
 - C/C++과 유사한 면이 많은 것 같다.
@@ -69,7 +70,7 @@ for (var key in dict_ex){			// 사전 순회 예시
 - && : AND
 - || : OR
 - == , != : 비교. but type을 비교하지는 않음
-- ===, !== : type 비교까지.
+- ===, !== : type 비교까지. (객체 자체를 비교하는 것. 두 개의 다른 object에 대해 ===는 무조건 false)
 
 
 ## 함수 Function
@@ -145,11 +146,38 @@ arr2.sort((x,y) => x-y);					// [3,20,100] (오름차순)
 arr2.sort(function(a,b) {return b-a})		// 이런 식으로도 비교함수 선언 가능  (내림차순)
 ```
 
+
+
 ## 문자열 (String)
 문자열 선언은 동일, 내장 함수만 간단하게 정리해보자.
 ### 내장 함수
 - str.length : 문자열 길이
-- 
+- str.slice(idx1, idx2(optional)) : Python에서 slicing을 [ : ]로만 하던 것과는 달리 slice()를 사용해야함
+	- idx2 는 optional. 생략하면 끝까지. 
+- str.substring(idx1, idx2(optional)) : 사실상 slice()와 동일한 기능. start와 end value 중 0보다 작은 값을 0으로 처리함.
+- str.replace(str2, str3) : returns a new string. 처음으로 등장한 str2만 str3로 변경.
+	- 만약 등장하는 모든 str2에 대해 변경 원한다면? /g flag 사용
+	~~~ javascript
+	let orig = "I love Github. Please come visit Github.";
+	let new = orig.replace(/Github/g, "Korea");	// new = "I love Korea. Please come visit Korea."
+	~~~
+- str.toUpperCase(), str.toLowerCase() : 대소문자 변환
+- str.concat() : "+" 연산과 동일한 concatenation 연산
+- str.trim() : 양 끝의 공백 제거
+- str.padStart(n, str2) : str 처음 ~ n-1 까지 str2로 padding (padding 길이는 무조건 n-1 고정)
+	- 숫자 padding도 따라서 문자열로 변환해서 진행 가능
+	~~~ javascript
+	let num = 9;
+	let num_text = num.toString();
+	let padded = num_text.padStart(3,"0");	// padded = "009"
+	~~~
+	- 같은 방식으로 뒤에 padding하는 str.padEnd()도 있다.
+- str.split("") : split() method
+- str.search(str2) : str에서 str2 첫 인덱스 찾기. 정규 표현식을 사용할 수 있다는 것이 indexOf와의 차이
+- str.indexOf(str2, startingposition(optional)) : search()와 같은 기능. starting position을 설정할 수 있다는 점이 다름.
+- str.includes(str2) : str2가 존재하면 true, 없으면 false return
+- str.startsWith(), str.endsWith() : returns true/false, case sensitive
+
 
 ## Math 객체
 Math 객체가 Javascript에는 내장되어있다. (추가 import 필요 X)
@@ -169,10 +197,23 @@ Math 객체가 Javascript에는 내장되어있다. (추가 import 필요 X)
 - Math.max / Math.min : 최대, 최소값 반환
 - Math.random()
 
+
+
 ## 기타
 - isNan(string) : 문자열이 숫자인지 확인 (returns true or false)
 - num.toString() : 숫자 -> 문자열 변환
 - Number(string) : 문자 -> 숫자 변환
 - parseInt(string, radix(optional)) : 문자열 -> 정수 변환 (if 정수 불가 returns NaN)
 
-# 추가 예정 (배열 내장 함수 + 문자열 정리 필요) + 2차원 배열 활용.
+
+
+## 2차원 배열
+JS에서는 const arr = [][]이나 const arr[3][3]처럼 선언해서 사용할 수 없다..
+
+그렇다면 어떻게 2차원 배열을 선언해주는가?
+- 배열에 초기값 할당
+~~~ javascript
+const arr = [[1,2], [3,4]];
+~~~
+
+- 직접 배열에 인자로 push
